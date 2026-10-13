@@ -26,18 +26,18 @@ export default function InstallButton() {
 
   return (
     <Button
-      size="sm"
       variant="flat"
       radius="full"
-      startContent={<IconDownload size={16} />}
+      aria-label="Install app"
+      startContent={<IconDownload size={17} />}
       onPress={async () => {
         deferred.prompt();
         await deferred.userChoice;
         setDeferred(null);
       }}
-      className="border border-default-200/60 bg-content1/60 backdrop-blur-xl"
+      className="h-10 w-10 min-w-10 border border-default-200/60 bg-content1/60 px-0 backdrop-blur-xl sm:w-auto sm:px-4"
     >
-      Install
+      <span className="hidden sm:inline">Install</span>
     </Button>
   );
 }

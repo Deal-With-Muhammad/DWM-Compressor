@@ -13,7 +13,7 @@
     "@ffmpeg/core": "^0.12.10",
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
-    "@heroui/react": "^2.4.8",
+    "@heroui/react": "2.7.11",
     "framer-motion": "^11.5.0",
     "heic2any": "^0.0.4",
     "jszip": "^3.10.1",

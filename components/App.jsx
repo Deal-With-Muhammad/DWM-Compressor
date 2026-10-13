@@ -15,9 +15,11 @@ import {
   IconConvert,
   IconFile,
   IconGithub,
+  IconGlobe,
   IconImage,
   IconLinkedin,
   IconLock,
+  IconMail,
   IconPuzzle,
   IconVideo,
 } from "./icons";
@@ -426,35 +428,59 @@ const TABS = [
 /* ---------- footer ---------- */
 
 function Footer() {
-  const link =
-    "inline-flex items-center gap-2 rounded-full border border-default-200/60 bg-content1/50 px-4 py-2 text-sm font-medium text-default-600 backdrop-blur-xl transition-colors hover:border-primary/50 hover:text-foreground";
+  const textLink =
+    "inline-flex items-center gap-1.5 rounded-sm text-default-500 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
+  const iconLink =
+    "grid h-9 w-9 place-items-center rounded-full border border-default-200/60 bg-content1/50 text-default-500 backdrop-blur-xl transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
   return (
     <footer className="mt-7 flex flex-col items-center gap-3 pb-4">
-      <div className="flex items-center gap-3">
-        <a className={link} href="https://github.com/Deal-With-Muhammad" target="_blank" rel="noopener noreferrer">
-          <IconGithub size={18} /> GitHub
-        </a>
-        <a
-          className={link}
-          href="https://www.linkedin.com/in/muhammad-ahmad-7009b8248/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconLinkedin size={18} /> LinkedIn
-        </a>
-        {/* Chrome extension — hidden on small screens (desktop-only feature) */}
-        <a
-          className={`${link} hidden sm:inline-flex`}
-          href="https://github.com/Deal-With-Muhammad"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconPuzzle size={18} /> Chrome extension
-        </a>
+      <div
+        className={`flex w-full flex-col items-center gap-3 rounded-2xl px-4 py-3.5 sm:flex-row sm:justify-between ${GLASS}`}
+      >
+        <div className="flex flex-col items-center gap-1 sm:items-start">
+          <p className="text-sm font-semibold text-foreground">Built by Muhammad Ahmad</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
+            <a className={textLink} href="https://dealwithmuhammad.com" target="_blank" rel="noopener">
+              <IconGlobe size={14} /> dealwithmuhammad.com
+            </a>
+            <a className={textLink} href="mailto:me@dealwithmuhammad.com">
+              <IconMail size={14} /> me@dealwithmuhammad.com
+            </a>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          {/* Chrome extension — hidden on small screens (desktop-only feature) */}
+          <a
+            className="hidden h-9 items-center gap-1.5 rounded-full border border-default-200/60 bg-content1/50 px-3.5 text-xs font-medium text-default-500 backdrop-blur-xl transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:inline-flex"
+            href="https://github.com/Deal-With-Muhammad"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconPuzzle size={15} /> Chrome extension
+          </a>
+          <a
+            className={iconLink}
+            href="https://github.com/Deal-With-Muhammad"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <IconGithub size={17} />
+          </a>
+          <a
+            className={iconLink}
+            href="https://www.linkedin.com/in/muhammad-ahmad-7009b8248/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <IconLinkedin size={17} />
+          </a>
+        </div>
       </div>
-      <p className="text-[11px] text-default-400">
-        Built by Muhammad Ahmad · Everything runs locally in your browser
-      </p>
+      <p className="text-[11px] text-default-400">Everything runs locally in your browser</p>
     </footer>
   );
 }
@@ -466,17 +492,17 @@ export default function App() {
 
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <header className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
+      <header className="mb-5 flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
             <IconCompress size={22} />
           </div>
-          <div>
+          <div className="min-w-0">
             <h1 className="text-xl font-bold leading-tight text-foreground">DWM Compressor</h1>
             <p className="text-xs text-default-500">Compress &amp; convert files — private, in your browser</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-shrink-0 items-center gap-2">
           <AccentPicker />
           <InstallButton />
           <ThemeToggle />

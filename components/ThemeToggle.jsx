@@ -18,9 +18,9 @@ export default function ThemeToggle() {
       aria-label="Toggle dark or light mode"
       onPress={() => setTheme(isDark ? "light" : "dark")}
       startContent={isDark ? <IconSun size={18} /> : <IconMoon size={18} />}
-      className="border border-default-200/60 bg-content1/60 backdrop-blur-xl"
+      className="h-10 w-10 min-w-10 border border-default-200/60 bg-content1/60 px-0 backdrop-blur-xl sm:w-auto sm:px-4"
     >
-      {isDark ? "Light" : "Dark"}
+      <span className="hidden sm:inline">{isDark ? "Light" : "Dark"}</span>
     </Button>
   );
 }

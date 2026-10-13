@@ -20,3 +20,26 @@ body {
 .dwm-shrink {
   animation: dwm-shrink 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Small pop-in for the accent palette. */
+@keyframes dwm-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dwm-pop {
+  transform-origin: top right;
+  animation: dwm-pop 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dwm-pop {
+    animation: none;
+  }
+}
