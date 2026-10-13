@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "DWM Compressor",
+  "version": "1.0.0",
+  "description": "Compress & convert PDFs, images and videos — private, right in your browser.",
+  "action": {
+    "default_title": "DWM Compressor",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

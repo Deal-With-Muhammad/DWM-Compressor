@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+/* Before → after "shrink" animation on result bars */
+@keyframes dwm-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: var(--to, 100%);
+  }
+}
+
+.dwm-shrink {
+  animation: dwm-shrink 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

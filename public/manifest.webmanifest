@@ -1,0 +1,13 @@
+{
+  "name": "DWM Compressor",
+  "short_name": "DWM Compressor",
+  "description": "Compress & convert PDFs, images and videos — private, right in your browser.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0f1a",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

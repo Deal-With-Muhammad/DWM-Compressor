@@ -1,0 +1,15 @@
+import App from "../components/App";
+
+export default function Home() {
+  return (
+    <main className="relative min-h-screen w-full overflow-hidden px-4 py-8 sm:py-12">
+      {/* Soft solid accent discs behind the frosted-glass panels (no gradients). */}
+      <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 bottom-16 h-72 w-72 rounded-full bg-secondary/10 blur-3xl" />
+
+      <div className="relative">
+        <App />
+      </div>
+    </main>
+  );
+}
