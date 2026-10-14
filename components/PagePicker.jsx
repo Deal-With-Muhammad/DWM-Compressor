@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Button, Progress } from "@heroui/react";
 import { extractPdfPages, getPdfPageThumbnails } from "../lib/engines";
 import { downloadBlob } from "../lib/utils";
+import { trackEvent } from "../lib/analytics";
 import { IconCheck, IconClose, IconDownload, IconUpload } from "./icons";
 
 export default function PagePicker() {
@@ -66,6 +67,7 @@ export default function PagePicker() {
       const pages = [...selected].sort((a, b) => a - b);
       const { blob, name } = await extractPdfPages(file, pages);
       downloadBlob(blob, name);
+      trackEvent("extract-pdf-pages");
     } catch (e) {
       console.error(e);
       setError("Export failed.");
@@ -148,7 +150,7 @@ export default function PagePicker() {
                   ].join(" ")}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.url} alt={`Page ${t.index}`} className="block w-full" />
+                  <img src={t.url} alt={`Thumbnail of page ${t.index}`} className="block w-full" />
                   <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] font-medium text-white">
                     {t.index}
                   </span>
@@ -200,7 +202,11 @@ export default function PagePicker() {
         >
           <div className="relative max-h-[90vh] max-w-[90vw] overflow-auto rounded-xl bg-white shadow-2xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={preview.url} alt={`Page ${preview.index}`} className="block max-h-[85vh] w-auto" />
+            <img
+              src={preview.url}
+              alt={`Preview of page ${preview.index}`}
+              className="block max-h-[85vh] w-auto"
+            />
           </div>
           <button
             onClick={() => setPreview(null)}

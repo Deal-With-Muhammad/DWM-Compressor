@@ -10,19 +10,7 @@ import Segmented from "./Segmented";
 import PdfToolsTab from "./PdfToolsTab";
 import AccentPicker from "./AccentPicker";
 import SavedTotal from "./SavedTotal";
-import {
-  IconCompress,
-  IconConvert,
-  IconFile,
-  IconGithub,
-  IconGlobe,
-  IconImage,
-  IconLinkedin,
-  IconLock,
-  IconMail,
-  IconPuzzle,
-  IconVideo,
-} from "./icons";
+import { IconCompress, IconConvert, IconFile, IconImage, IconLock, IconVideo } from "./icons";
 import {
   compressImage,
   compressImageToTarget,
@@ -207,6 +195,7 @@ const TABS = [
     props: {
       accept: "application/pdf,.pdf",
       actionLabel: "Compress",
+      event: "compress-pdf",
       emptyTitle: "Drop PDF files here or click to browse",
       emptyHint: "Add as many PDFs as you like",
       initialOptions: { mode: "quality", quality: 0.6, scale: 1.5, targetValue: 5, targetUnit: "MB" },
@@ -251,6 +240,7 @@ const TABS = [
     props: {
       accept: "image/*,.heic,.heif",
       actionLabel: "Compress",
+      event: "compress-image",
       emptyTitle: "Drop images here or click to browse",
       emptyHint: "JPG, PNG, WebP, HEIC… add as many as you like",
       initialOptions: {
@@ -313,6 +303,7 @@ const TABS = [
     props: {
       accept: "video/*,.mp4,.mov,.mkv,.avi,.webm,.m4v,.3gp,.flv,.wmv,.mpeg,.mpg,.ts,.ogv,.m2ts",
       actionLabel: "Compress",
+      event: "compress-video",
       emptyTitle: "Drop videos here or click to browse",
       emptyHint: "MP4, MOV, MKV, AVI, WebM, FLV, WMV…",
       initialOptions: { crf: 28, scale: 0, preset: "veryfast", format: "mp4" },
@@ -369,6 +360,7 @@ const TABS = [
     props: {
       accept: (o) => (o.source === "pdf" ? "application/pdf,.pdf" : "image/*,.heic,.heif"),
       actionLabel: "Convert",
+      event: (o) => (o.source === "pdf" ? "convert-pdf" : "convert-image"),
       emptyTitle: "Drop files here or click to browse",
       emptyHint: "Choose what you have and what to make, then add files",
       initialOptions: { source: "images", target: "pdf", quality: 0.85, scale: 2 },
@@ -425,66 +417,6 @@ const TABS = [
   },
 ];
 
-/* ---------- footer ---------- */
-
-function Footer() {
-  const textLink =
-    "inline-flex items-center gap-1.5 rounded-sm text-default-500 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
-  const iconLink =
-    "grid h-9 w-9 place-items-center rounded-full border border-default-200/60 bg-content1/50 text-default-500 backdrop-blur-xl transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
-  return (
-    <footer className="mt-7 flex flex-col items-center gap-3 pb-4">
-      <div
-        className={`flex w-full flex-col items-center gap-3 rounded-2xl px-4 py-3.5 sm:flex-row sm:justify-between ${GLASS}`}
-      >
-        <div className="flex flex-col items-center gap-1 sm:items-start">
-          <p className="text-sm font-semibold text-foreground">Built by Muhammad Ahmad</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
-            <a className={textLink} href="https://dealwithmuhammad.com" target="_blank" rel="noopener">
-              <IconGlobe size={14} /> dealwithmuhammad.com
-            </a>
-            <a className={textLink} href="mailto:me@dealwithmuhammad.com">
-              <IconMail size={14} /> me@dealwithmuhammad.com
-            </a>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          {/* Chrome extension — hidden on small screens (desktop-only feature) */}
-          <a
-            className="hidden h-9 items-center gap-1.5 rounded-full border border-default-200/60 bg-content1/50 px-3.5 text-xs font-medium text-default-500 backdrop-blur-xl transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:inline-flex"
-            href="https://github.com/Deal-With-Muhammad"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <IconPuzzle size={15} /> Chrome extension
-          </a>
-          <a
-            className={iconLink}
-            href="https://github.com/Deal-With-Muhammad"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <IconGithub size={17} />
-          </a>
-          <a
-            className={iconLink}
-            href="https://www.linkedin.com/in/muhammad-ahmad-7009b8248/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            title="LinkedIn"
-          >
-            <IconLinkedin size={17} />
-          </a>
-        </div>
-      </div>
-      <p className="text-[11px] text-default-400">Everything runs locally in your browser</p>
-    </footer>
-  );
-}
-
 /* ---------- app ---------- */
 
 export default function App() {
@@ -499,7 +431,7 @@ export default function App() {
           </div>
           <div className="min-w-0">
             <h1 className="text-xl font-bold leading-tight text-foreground">DWM Compressor</h1>
-            <p className="text-xs text-default-500">Compress &amp; convert files — private, in your browser</p>
+            <p className="text-xs text-default-500">Compress PDFs, images &amp; video — private, in your browser</p>
           </div>
         </div>
         <div className="flex flex-shrink-0 items-center gap-2">
@@ -555,8 +487,6 @@ export default function App() {
       </div>
 
       <SavedTotal />
-
-      <Footer />
     </div>
   );
 }

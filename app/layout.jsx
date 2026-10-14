@@ -1,15 +1,48 @@
 import "./globals.css";
+import Script from "next/script";
 import { Providers } from "./providers";
 import Analytics from "../components/Analytics";
 import ServiceWorker from "../components/ServiceWorker";
+import { AUTHOR, DESCRIPTION, KEYWORDS, SITE_NAME, SITE_URL, TITLE } from "../lib/seo";
 
 export const metadata = {
-  title: "DWM Compressor — compress & convert PDF, images & video",
-  description:
-    "Compress and convert PDFs, images and videos right in your browser. 100% private, no uploads, no file-size limits, no sign-up.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: KEYWORDS,
+  authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
+  creator: AUTHOR.name,
+  publisher: AUTHOR.name,
+  category: "Utilities",
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // og:image / twitter:image come from app/opengraph-image.jsx.
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
-  applicationName: "DWM Compressor",
 };
 
 export const viewport = {
@@ -23,6 +56,13 @@ export default function RootLayout({ children }) {
         <Providers>{children}</Providers>
         <ServiceWorker />
         <Analytics />
+        {/* Shared DWM visitor analytics (pageviews + window.dwm(event)). Only
+            tracks on *.dealwithmuhammad.com, so local dev is ignored. */}
+        <Script
+          src="https://www.dealwithmuhammad.com/dwm.js"
+          data-site="compressor"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

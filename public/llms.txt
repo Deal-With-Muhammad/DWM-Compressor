@@ -1,0 +1,59 @@
+# DWM Compressor
+
+> DWM Compressor (https://compressor.dealwithmuhammad.com) is a free online tool that compresses PDFs, images and videos entirely in the web browser. Files are processed on the user's own device with pdf.js, pdf-lib and ffmpeg.wasm (WebAssembly) — nothing is uploaded, there is no file-size limit and no sign-up. It was built by Muhammad Ahmad, a web and mobile app developer in Kuala Lumpur, Malaysia.
+
+## What it does
+
+- **Compress PDF** — by quality (30–90%) or to a target size in KB or MB (for example 100 KB, 200 KB, 500 KB or 1 MB), at Low, Medium or High resolution. Each page is re-rendered with pdf.js, re-encoded as a JPEG and rebuilt into a new PDF with pdf-lib. In target-size mode it automatically searches for the highest quality that fits under the target.
+- **Compress images** — JPG, PNG, WebP and iPhone HEIC/HEIF photos, by quality or target size, optionally resized to a maximum of 2000px or 1280px, saved as JPG or WebP. In target-size mode it lowers quality first and then shrinks the dimensions if needed.
+- **Compress video** — accepts MP4, MOV, MKV, AVI, WebM, M4V, 3GP, FLV, WMV, MPEG/MPG, TS, M2TS, OGV and most other formats. Outputs MP4 (H.264 video, AAC audio) or WebM (VP9 video, Opus audio). Options: compression strength (CRF 20–34) and resolution (keep, 720p or 480p). Uses ffmpeg.wasm; the ~31 MB engine downloads once, on first use.
+- **Convert** — HEIC/HEIF to JPG; images to JPG, PNG or WebP; many images combined into one PDF (one image per page); a PDF into JPG images (one per page, as a ZIP).
+- **PDF tools** — select and extract pages into a new PDF (with page thumbnails), add a password to a PDF, or remove a password you already know.
+- **Convenience** — batch processing of many files at once, paste files from the clipboard, download results one by one or all together as a ZIP, light/dark theme, and installable as a Progressive Web App.
+- **Chrome extension** — a small extension that opens DWM Compressor from the browser toolbar or the right-click menu.
+
+## Privacy
+
+- All processing happens locally in the browser. Files, file names and file contents are never uploaded to any server.
+- The site records anonymous page views and which tool was used (for example "compress-pdf") — never anything about the files themselves.
+- No account, no sign-up, no watermark.
+
+## Limits
+
+- No file-size or file-count limit is imposed by the tool. The practical limit is the device's memory; very large files, especially multi-gigabyte videos, may not fit in the browser's memory.
+- PDF compression rasterises pages: text becomes part of the page image, so it is no longer selectable or searchable. It gives the biggest savings on scanned and image-heavy PDFs; text-only PDFs may not shrink much.
+- If a target size can't be reached, the smallest version it could produce is returned; choosing Low resolution helps.
+- Video compression is CPU-intensive and slower on phones and older computers. There is no target-size mode for video.
+- Requires a modern browser with JavaScript and WebAssembly (Chrome, Edge, Firefox, Safari — desktop or mobile).
+
+## How to compress a PDF
+
+1. Open the PDF tab and drop one or more PDFs onto the page, click to browse, or paste with Ctrl/⌘+V.
+2. Choose "By quality" and set the slider (60% is a good balance), or choose "Target size" and enter a size such as 200 KB or 1 MB. Pick Low, Medium or High resolution.
+3. Click Compress, then download each file or all of them as a ZIP.
+
+## FAQ
+
+- **Is DWM Compressor free?** Yes — completely free, with no sign-up, no watermark and no daily limit.
+- **Are my files uploaded?** No. Everything runs in your browser with pdf.js, pdf-lib and ffmpeg.wasm, so your files never leave your device.
+- **How do I compress a PDF to 100KB or 200KB?** In the PDF tab choose "Target size", enter 100 or 200 and select KB, then click Compress. If a large PDF can't get that small, set Resolution to Low and try again.
+- **Does compressing a PDF reduce quality?** Somewhat: pages are re-rendered as images at the quality and resolution you choose, and text is no longer selectable. 60% quality at Medium resolution is a good balance.
+- **Can I convert HEIC to JPG?** Yes. In the Convert tab choose Images, then JPG (or PNG/WebP), and add .heic/.heif photos. You can also combine photos into a PDF.
+- **Is there a file-size limit?** No limit is set by the tool; only your device's memory limits very large files.
+- **Does it work on a phone?** Yes, in modern mobile browsers on iPhone and Android, and it can be added to the home screen like an app.
+- **Who made it?** Muhammad Ahmad, a web and mobile app developer in Kuala Lumpur, Malaysia.
+
+## Author
+
+- Name: Muhammad Ahmad — Web & Mobile App Developer, Kuala Lumpur, Malaysia
+- Portfolio: https://www.dealwithmuhammad.com
+- Case study: https://www.dealwithmuhammad.com/work/dwm-compressor
+- Email: me@dealwithmuhammad.com
+- WhatsApp: https://wa.me/601139865270
+- GitHub: https://github.com/Deal-With-Muhammad
+- LinkedIn: https://www.linkedin.com/in/muhammad-ahmad-7009b8248/
+
+## More free tools by the same author
+
+- [DWM Downloader](https://downloader.dealwithmuhammad.com): download videos from YouTube, Instagram, TikTok and more
+- [Progress 2026](https://progress.dealwithmuhammad.com): a live counter of how much of the year has gone

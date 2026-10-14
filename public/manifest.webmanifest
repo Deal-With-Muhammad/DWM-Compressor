@@ -1,7 +1,10 @@
 {
+  "id": "/",
   "name": "DWM Compressor",
   "short_name": "DWM Compressor",
-  "description": "Compress & convert PDFs, images and videos — private, right in your browser.",
+  "description": "Compress PDFs, images & video — privately, in your browser. No uploads, no sign-up.",
+  "lang": "en",
+  "categories": ["utilities", "productivity"],
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

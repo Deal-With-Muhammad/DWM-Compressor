@@ -53,6 +53,7 @@ export default function PdfToolsTab({ isActive }) {
           isActive={isActive}
           accept="application/pdf,.pdf"
           actionLabel="Protect"
+          event="protect-pdf"
           emptyTitle="Drop PDFs to password-protect"
           emptyHint="Add one or more PDFs"
           initialOptions={{ password: "" }}
@@ -77,6 +78,7 @@ export default function PdfToolsTab({ isActive }) {
           isActive={isActive}
           accept="application/pdf,.pdf"
           actionLabel="Unlock"
+          event="unlock-pdf"
           emptyTitle="Drop password-protected PDFs"
           emptyHint="Add one or more PDFs"
           initialOptions={{ password: "" }}

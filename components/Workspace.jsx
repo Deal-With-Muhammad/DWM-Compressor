@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button, Chip, Progress } from "@heroui/react";
 import { addSavedBytes, downloadBlob, downloadZip, formatBytes, formatTime, uid } from "../lib/utils";
-import { track } from "../lib/analytics";
+import { track, trackEvent } from "../lib/analytics";
 import { IconCheck, IconClock, IconClose, IconDownload, IconTrash, IconUpload } from "./icons";
 
 const GLASS = "border border-default-200/60 bg-content1/50 backdrop-blur-xl";
@@ -39,6 +39,9 @@ export default function Workspace({
   emptyHint = "Add as many as you like",
   note,
   isActive = false,
+  // Analytics event fired once per successful run (e.g. "compress-pdf").
+  // A string, or a function of the current options.
+  event,
 }) {
   const [items, setItems] = useState([]);
   const [outputs, setOutputs] = useState([]);
@@ -166,9 +169,24 @@ export default function Workspace({
     );
     setItems((prev) => prev.map((i) => ({ ...i, status: "queued", progress: 0, error: "" })));
 
+    // Count successful outputs so the analytics event only fires when at least
+    // one file actually came out (runners swallow per-file errors).
+    let produced = 0;
+    const countedAddOutput = (out) => {
+      produced += 1;
+      addOutput(out);
+    };
+
     try {
-      await runner(items, { options, setItemStatus, setItemProgress, addOutput, setGlobalStatus });
+      await runner(items, {
+        options,
+        setItemStatus,
+        setItemProgress,
+        addOutput: countedAddOutput,
+        setGlobalStatus,
+      });
       track("process", { tool: actionLabel, files: items.length });
+      if (produced > 0) trackEvent(typeof event === "function" ? event(options) : event);
     } catch (e) {
       console.error(e);
       setGlobalStatus(`Error: ${e?.message || "something went wrong"}`);
@@ -177,7 +195,7 @@ export default function Workspace({
       setElapsed((performance.now() - startRef.current) / 1000);
       setRunning(false);
     }
-  }, [items, options, runner, running]);
+  }, [items, options, runner, running, event]);
 
   const onDrop = (e) => {
     e.preventDefault();
