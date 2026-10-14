@@ -57,3 +57,7 @@
 
 - [DWM Downloader](https://downloader.dealwithmuhammad.com): download videos from YouTube, Instagram, TikTok and more
 - [Progress 2026](https://progress.dealwithmuhammad.com): a live counter of how much of the year has gone
+- [DWM QR](https://qr.dealwithmuhammad.com): free QR code generator with logos, colours, poster and flyer templates, and optional expiry
+- [DWM BG Remover](https://bgremove.dealwithmuhammad.com): remove image backgrounds with AI that runs in the browser
+- [DWM IP](https://ip.dealwithmuhammad.com): what is my IP address — public IPv4/IPv6, location, ISP and IP/domain lookup
+- [DWM Email Checker](https://emailcheck.dealwithmuhammad.com): check whether an email address exists and can receive mail

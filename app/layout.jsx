@@ -63,6 +63,8 @@ export default function RootLayout({ children }) {
           data-site="compressor"
           strategy="afterInteractive"
         />
+        {/* The 9-dot app launcher shared by every DWM tool. */}
+        <Script src="https://www.dealwithmuhammad.com/dwm-apps.js" strategy="afterInteractive" />
       </body>
     </html>
   );

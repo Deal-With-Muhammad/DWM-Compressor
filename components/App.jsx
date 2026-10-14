@@ -438,6 +438,8 @@ export default function App() {
           <AccentPicker />
           <InstallButton />
           <ThemeToggle />
+          {/* Google-style menu of every DWM tool, from dealwithmuhammad.com/dwm-apps.js */}
+          <dwm-apps current="compressor"></dwm-apps>
         </div>
       </header>
 
