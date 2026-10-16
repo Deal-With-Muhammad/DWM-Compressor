@@ -1,6 +1,15 @@
 # DWM Compressor
 
-> DWM Compressor (https://compressor.dealwithmuhammad.com) is a free online tool that compresses PDFs, images and videos entirely in the web browser. Files are processed on the user's own device with pdf.js, pdf-lib and ffmpeg.wasm (WebAssembly) — nothing is uploaded, there is no file-size limit and no sign-up. It was built by Muhammad Ahmad, a web and mobile app developer in Kuala Lumpur, Malaysia.
+> DWM Compressor (https://compressor.dealwithmuhammad.com) is a free online compressor that runs entirely in the web browser: it compresses PDFs by quality or to an exact target size (for example under 100 KB), compresses JPG, PNG, WebP and iPhone HEIC images (also to a target size such as 50 KB), converts HEIC to JPG, and compresses video to MP4 or WebM with ffmpeg.wasm. Files are processed on the user's own device and never uploaded; there is no sign-up, no watermark, no paid tier and no file-size limit. It was built by Muhammad Ahmad, a web and mobile app developer in Kuala Lumpur, Malaysia. Last updated October 2026.
+
+## Pages
+
+- [Compress PDF, images & video online](https://compressor.dealwithmuhammad.com/): the full tool, opening on PDF compression
+- [Compress PDF to 100 KB](https://compressor.dealwithmuhammad.com/compress-pdf-to-100kb): PDF tool preset to a 100 KB target at Low resolution, for job, exam and visa portals
+- [Compress images online](https://compressor.dealwithmuhammad.com/compress-image): JPG, PNG, WebP and HEIC compression preset to 70% quality and 2000px
+- [Compress JPEG to 50 KB](https://compressor.dealwithmuhammad.com/compress-jpeg-to-50kb): image tool preset to a 50 KB JPG target, for application photos and signatures
+- [HEIC to JPG converter](https://compressor.dealwithmuhammad.com/heic-to-jpg): converts iPhone HEIC/HEIF photos to JPG (or PNG, WebP, PDF) in the browser
+- [Compress video online](https://compressor.dealwithmuhammad.com/compress-video): MP4/MOV/MKV and more to MP4 (H.264) or WebM (VP9), with 720p/480p options
 
 ## What it does
 
@@ -23,6 +32,8 @@
 - No file-size or file-count limit is imposed by the tool. The practical limit is the device's memory; very large files, especially multi-gigabyte videos, may not fit in the browser's memory.
 - PDF compression rasterises pages: text becomes part of the page image, so it is no longer selectable or searchable. It gives the biggest savings on scanned and image-heavy PDFs; text-only PDFs may not shrink much.
 - If a target size can't be reached, the smallest version it could produce is returned; choosing Low resolution helps.
+- Sizes use 1 KB = 1,024 bytes (100 KB = 102,400 bytes). For portals that count 1 KB as 1,000 bytes, aim slightly lower (e.g. 95 KB).
+- Compressed and converted images do not keep EXIF metadata (camera, date, GPS location).
 - Video compression is CPU-intensive and slower on phones and older computers. There is no target-size mode for video.
 - Requires a modern browser with JavaScript and WebAssembly (Chrome, Edge, Firefox, Safari — desktop or mobile).
 
@@ -41,6 +52,8 @@
 - **Can I convert HEIC to JPG?** Yes. In the Convert tab choose Images, then JPG (or PNG/WebP), and add .heic/.heif photos. You can also combine photos into a PDF.
 - **Is there a file-size limit?** No limit is set by the tool; only your device's memory limits very large files.
 - **Does it work on a phone?** Yes, in modern mobile browsers on iPhone and Android, and it can be added to the home screen like an app.
+- **Can I compress a JPEG to 50 KB?** Yes. In the Images tab choose "Target size", enter 50 and select KB. It lowers quality first and only shrinks the dimensions if needed.
+- **How is it different from Smallpdf or iLovePDF?** Those services offer many more PDF tools and process files on their servers. DWM Compressor runs entirely in the browser with no account, paid tier or daily limit; the trade-off is that PDF pages become images, so text is not selectable afterwards.
 - **Who made it?** Muhammad Ahmad, a web and mobile app developer in Kuala Lumpur, Malaysia.
 
 ## Author
@@ -55,9 +68,9 @@
 
 ## More free tools by the same author
 
-- [DWM Downloader](https://downloader.dealwithmuhammad.com): download videos from YouTube, Instagram, TikTok and more
-- [Progress 2026](https://progress.dealwithmuhammad.com): a live counter of how much of the year has gone
-- [DWM QR](https://qr.dealwithmuhammad.com): free QR code generator with logos, colours, poster and flyer templates, and optional expiry
-- [DWM BG Remover](https://bgremove.dealwithmuhammad.com): remove image backgrounds with AI that runs in the browser
-- [DWM IP](https://ip.dealwithmuhammad.com): what is my IP address — public IPv4/IPv6, location, ISP and IP/domain lookup
-- [DWM Email Checker](https://emailcheck.dealwithmuhammad.com): check whether an email address exists and can receive mail
+- [Free video downloader](https://downloader.dealwithmuhammad.com): download videos from YouTube, Instagram, TikTok and more
+- [QR code generator](https://qr.dealwithmuhammad.com): free QR codes with logos, colours, poster and flyer templates, and optional expiry
+- [Background remover](https://bgremove.dealwithmuhammad.com): remove image backgrounds with AI that runs in the browser
+- [What is my IP](https://ip.dealwithmuhammad.com): public IPv4/IPv6, location, ISP and IP/domain lookup
+- [Email checker](https://emailcheck.dealwithmuhammad.com): check whether an email address exists and can receive mail
+- [Year progress bar](https://progress.dealwithmuhammad.com): a live counter of how much of the year has gone

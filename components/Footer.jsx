@@ -7,7 +7,9 @@ import {
   IconMail,
   IconPuzzle,
 } from "./icons";
+import Link from "next/link";
 import { AUTHOR, SISTER_TOOLS } from "../lib/seo";
+import { LANDING_PAGES } from "../lib/pages";
 
 const GLASS = "border border-default-200/60 bg-content1/50 backdrop-blur-xl";
 
@@ -31,12 +33,10 @@ export default function Footer() {
               target="_blank"
               rel="author noopener"
             >
-              {AUTHOR.name}
+              {AUTHOR.name}, web &amp; mobile app developer
             </a>
           </p>
-          <p className="text-xs text-default-500">
-            Web &amp; mobile app developer in {AUTHOR.location}
-          </p>
+          <p className="text-xs text-default-500">Based in {AUTHOR.location}</p>
           <div className="mt-0.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs sm:justify-start">
             <a className={textLink} href={AUTHOR.url} target="_blank" rel="noopener">
               <IconGlobe size={14} /> dealwithmuhammad.com
@@ -83,13 +83,28 @@ export default function Footer() {
       </div>
 
       <nav
+        aria-label="Compressor tasks"
+        className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs"
+      >
+        <span className="text-default-400">Tasks:</span>
+        <Link className={textLink} href="/">
+          Compress PDF online
+        </Link>
+        {LANDING_PAGES.map((p) => (
+          <Link key={p.slug} className={textLink} href={`/${p.slug}`}>
+            {p.label}
+          </Link>
+        ))}
+      </nav>
+
+      <nav
         aria-label="More free tools by Muhammad Ahmad"
         className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs"
       >
         <span className="text-default-400">More free tools:</span>
         {SISTER_TOOLS.map((t) => (
           <a key={t.url} className={textLink} href={t.url} target="_blank" rel="noopener" title={t.blurb}>
-            {t.name}
+            {t.label}
           </a>
         ))}
       </nav>

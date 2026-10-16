@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import Workspace from "./Workspace";
 import RangeSlider from "./RangeSlider";
@@ -419,21 +420,25 @@ const TABS = [
 
 /* ---------- app ---------- */
 
-export default function App() {
-  const [activeKey, setActiveKey] = useState("pdf");
+// `initialTab` and `presets` let a landing page open the tool ready for its job,
+// e.g. { pdf: { mode: "target", targetValue: 100, targetUnit: "KB" } }.
+// `heading` / `answer` are the page's H1 and the one-line answer under it;
+// `crumb` (landing pages only) adds a "DWM Compressor / …" breadcrumb.
+export default function App({ initialTab = "pdf", presets = {}, heading, answer, crumb }) {
+  const [activeKey, setActiveKey] = useState(initialTab);
 
   return (
     <div className="mx-auto w-full max-w-2xl">
       <header className="mb-5 flex items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-3">
-          <div className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
-            <IconCompress size={22} />
-          </div>
-          <div className="min-w-0">
-            <h1 className="text-xl font-bold leading-tight text-foreground">DWM Compressor</h1>
-            <p className="text-xs text-default-500">Compress PDFs, images &amp; video — private, in your browser</p>
-          </div>
-        </div>
+        <Link
+          href="/"
+          className="flex min-w-0 items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <span className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
+            <IconCompress size={18} />
+          </span>
+          <span className="truncate text-sm font-semibold text-foreground">DWM Compressor</span>
+        </Link>
         <div className="flex flex-shrink-0 items-center gap-2">
           <AccentPicker />
           <InstallButton />
@@ -442,6 +447,24 @@ export default function App() {
           <dwm-apps current="compressor"></dwm-apps>
         </div>
       </header>
+
+      <div className="mb-5 px-1">
+        {crumb && (
+          <nav aria-label="Breadcrumb" className="mb-1.5 text-xs text-default-400">
+            <Link className="rounded-sm transition-colors hover:text-primary" href="/">
+              DWM Compressor
+            </Link>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page" className="text-default-500">
+              {crumb}
+            </span>
+          </nav>
+        )}
+        <h1 className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
+          {heading}
+        </h1>
+        {answer && <p className="mt-2 text-sm leading-relaxed text-default-500">{answer}</p>}
+      </div>
 
       <div className={`rounded-3xl p-3 shadow-2xl sm:p-5 ${GLASS}`}>
         {/* Custom tab bar */}
@@ -481,7 +504,11 @@ export default function App() {
               {t.render ? (
                 t.render(t.key === activeKey)
               ) : (
-                <Workspace {...t.props} isActive={t.key === activeKey} />
+                <Workspace
+                  {...t.props}
+                  initialOptions={{ ...t.props.initialOptions, ...presets[t.key] }}
+                  isActive={t.key === activeKey}
+                />
               )}
             </div>
           ))}
