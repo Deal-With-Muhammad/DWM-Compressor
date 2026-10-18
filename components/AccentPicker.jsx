@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const STORAGE_KEY = "dwm_accent";
 
 const ACCENTS = [
+  { key: "tomato", label: "Tomato", primary: "9 74% 56%", fg: "0 0% 100%", dot: "#e2533b" },
   { key: "indigo", label: "Indigo", primary: "244 76% 58%", fg: "0 0% 100%", dot: "#5b52e6" },
   { key: "blue", label: "Blue", primary: "212 100% 47%", fg: "0 0% 100%", dot: "#006fee" },
   { key: "emerald", label: "Emerald", primary: "160 84% 39%", fg: "0 0% 100%", dot: "#10b981" },
@@ -21,14 +22,14 @@ function applyAccent(a) {
 
 // One swatch button that opens a small palette, instead of a row of dots.
 export default function AccentPicker() {
-  const [active, setActive] = useState("indigo");
+  const [active, setActive] = useState("tomato");
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
 
   useEffect(() => {
-    let key = "indigo";
+    let key = "tomato";
     try {
-      key = localStorage.getItem(STORAGE_KEY) || "indigo";
+      key = localStorage.getItem(STORAGE_KEY) || "tomato";
     } catch (_) {}
     const a = ACCENTS.find((x) => x.key === key) || ACCENTS[0];
     applyAccent(a);

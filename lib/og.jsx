@@ -28,7 +28,7 @@ export const OG_SIZE = { width: 1200, height: 630 };
 export const DEFAULT_CHIPS = ["No uploads", "No sign-up", "No size limit", "HEIC to JPG", "100% free"];
 
 // Renders the 1200x630 share card. `headline` is the white first line and
-// `subline` the indigo second line.
+// `subline` the tomato-tinted second line.
 export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }) {
   const fonts = await loadFonts();
 
@@ -57,7 +57,7 @@ export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }
             width: 640,
             height: 640,
             borderRadius: 9999,
-            backgroundImage: "radial-gradient(circle, rgba(79,70,229,0.45) 0%, rgba(79,70,229,0) 70%)",
+            backgroundImage: "radial-gradient(circle, rgba(226,83,59,0.42) 0%, rgba(226,83,59,0) 70%)",
           }}
         />
         <div
@@ -68,7 +68,7 @@ export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }
             width: 720,
             height: 720,
             borderRadius: 9999,
-            backgroundImage: "radial-gradient(circle, rgba(147,51,234,0.30) 0%, rgba(147,51,234,0) 70%)",
+            backgroundImage: "radial-gradient(circle, rgba(245,140,60,0.26) 0%, rgba(245,140,60,0) 70%)",
           }}
         />
 
@@ -110,7 +110,7 @@ export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }
               fontWeight: 700,
               letterSpacing: -1.5,
               lineHeight: 1.08,
-              color: "#a5b4fc",
+              color: "#f6a894",
             }}
           >
             {subline}
@@ -146,7 +146,7 @@ export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }
           }}
         >
           <div style={{ display: "flex" }}>by Muhammad Ahmad · dealwithmuhammad.com</div>
-          <div style={{ display: "flex", color: "#a5b4fc" }}>compressor.dealwithmuhammad.com</div>
+          <div style={{ display: "flex", color: "#f6a894" }}>compressor.dealwithmuhammad.com</div>
         </div>
       </div>
     ),

@@ -11,5 +11,13 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [heroui()],
+  // Primary is the logo colour (public/icon.svg); the accent picker can still change it.
+  plugins: [
+    heroui({
+      themes: {
+        light: { colors: { primary: { DEFAULT: "#e2533b", foreground: "#ffffff" } } },
+        dark: { colors: { primary: { DEFAULT: "#e2533b", foreground: "#ffffff" } } },
+      },
+    }),
+  ],
 };
