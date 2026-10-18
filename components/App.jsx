@@ -434,7 +434,7 @@ export default function App({ initialTab = "pdf", presets = {}, heading, answer,
           href="/"
           className="flex min-w-0 items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <span className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
+          <span className="block h-9 w-9 flex-shrink-0 overflow-hidden rounded-xl shadow-lg shadow-[#e2533b]/30">
             <BrandMark size={36} />
           </span>
           <span className="truncate text-sm font-semibold text-foreground">DWM Compressor</span>
