@@ -19,6 +19,26 @@ function Svg({ size = 20, strokeWidth = 1.8, children, ...props }) {
   );
 }
 
+// The DWM Compressor mark, drawn in the 512 x 512 space of public/icon.svg (same art as the favicon
+// and the launcher tile). Size it to the whole accent tile: white parts use currentColor and the
+// knock-outs are painted in the accent colour, so it follows the accent picker.
+export const BrandMark = ({ size = 40, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 512 512" aria-hidden="true" {...props}>
+    <path
+      d="M176 108h128l68 68v192a36 36 0 0 1-36 36H176a36 36 0 0 1-36-36V144a36 36 0 0 1 36-36Z"
+      fill="currentColor"
+    />
+    <path
+      d="M208 176l48 38 48-38M208 336l48-38 48 38M200 256h112"
+      fill="none"
+      strokeWidth={30}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ stroke: "hsl(var(--heroui-primary))" }}
+    />
+  </svg>
+);
+
 export const IconCompress = (p) => (
   <Svg {...p}>
     <polyline points="4 14 10 14 10 20" />

@@ -13,8 +13,6 @@ A lightweight extension that opens the DWM Compressor app (toolbar button + righ
 
 - Change `APP_URL` in **both** `background.js` and `popup.js` to your deployed URL
   (e.g. `https://your-domain.com`) once you have a domain.
-- (Optional) add toolbar icons: create `icons/16.png`, `48.png`, `128.png` and add an
-  `"icons"` block to `manifest.json`. Without them Chrome shows a default icon.
 
 ## Next step (bigger project)
 

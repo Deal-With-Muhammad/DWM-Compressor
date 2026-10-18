@@ -42,7 +42,8 @@ export const metadata = {
     description: DESCRIPTION,
   },
   manifest: "/manifest.webmanifest",
-  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  // The iOS home-screen icon is app/apple-icon.png (full-bleed PNG; iOS ignores SVG).
+  icons: { icon: "/icon.svg" },
 };
 
 export const viewport = {

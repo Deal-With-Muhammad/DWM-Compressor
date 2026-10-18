@@ -86,20 +86,19 @@ export async function renderOgImage({ headline, subline, chips = DEFAULT_CHIPS }
               boxShadow: "0 12px 40px rgba(79,70,229,0.45)",
             }}
           >
-            <svg
-              width="42"
-              height="42"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#ffffff"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="4 14 10 14 10 20" />
-              <polyline points="20 10 14 10 14 4" />
-              <line x1="14" y1="10" x2="21" y2="3" />
-              <line x1="3" y1="21" x2="10" y2="14" />
+            <svg width="76" height="76" viewBox="0 0 512 512">
+              <path
+                d="M176 108h128l68 68v192a36 36 0 0 1-36 36H176a36 36 0 0 1-36-36V144a36 36 0 0 1 36-36Z"
+                fill="#ffffff"
+              />
+              <path
+                d="M208 176l48 38 48-38M208 336l48-38 48 38M200 256h112"
+                fill="none"
+                stroke="#4f46e5"
+                strokeWidth={30}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
           <div style={{ display: "flex", fontSize: 40, fontWeight: 700, letterSpacing: -0.5 }}>
