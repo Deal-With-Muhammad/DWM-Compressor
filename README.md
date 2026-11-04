@@ -6,9 +6,25 @@ Compress PDFs (by quality or to a target size), compress and convert images
 (including iPhone HEIC) and compress video **entirely in your browser** —
 nothing is uploaded anywhere. No file-size limit, no sign-up.
 
-Built with **Next.js** + **HeroUI** by [Muhammad Ahmad](https://www.dealwithmuhammad.com).
+Built with **Next.js** + **HeroUI** by [Muhammad Ahmad](https://www.dealwithmuhammad.com). [Read the case study](https://www.dealwithmuhammad.com/work/dwm-compressor).
 
-## How it works
+<a href="https://compressor.dealwithmuhammad.com"><img src="https://www.dealwithmuhammad.com/work/covers/dwm-compressor.jpg" alt="DWM Compressor in a browser and on a phone"></a>
+
+## What it can do
+
+| Tab | What you get |
+| --- | --- |
+| PDF | Compress by quality or to a target size in KB or MB |
+| Images | Compress JPG, PNG, WebP and HEIC, with a max size and JPG or WebP output |
+| Video | Compress with ffmpeg.wasm, choose the strength and resolution, and save as MP4 or WebM |
+| Convert | Images to PDF, JPG, PNG or WebP, and PDF pages to JPG images in a ZIP |
+| PDF Tools | Select pages, protect with a password, or unlock |
+
+It also takes several files at once, lets you paste from the clipboard, downloads everything as a ZIP, and installs as a PWA.
+
+There are preset pages too: `/compress-pdf-to-100kb`, `/compress-image`, `/compress-jpeg-to-50kb`, `/heic-to-jpg` and `/compress-video`.
+
+## How PDF compression works
 
 Each page is re-rendered with pdf.js and re-encoded as a JPEG at your chosen
 quality, then reassembled into a new PDF with `pdf-lib`. This gives big savings on
@@ -30,6 +46,12 @@ Then open http://localhost:3000
 npm run build
 npm run start
 ```
+
+`npm install` also copies the pdf.js worker and the ffmpeg core into `public/`.
+
+## Chrome extension
+
+`extension/` is a small Manifest V3 launcher that just opens the app. Its `APP_URL` in `background.js` and `popup.js` still points at `http://localhost:3000`, so change that to the live URL before publishing it.
 
 ## Notes on huge files
 
