@@ -109,6 +109,15 @@ export default function Footer() {
         ))}
       </nav>
 
+      <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs">
+        <Link className={textLink} href="/privacy">
+          Privacy Policy
+        </Link>
+        <Link className={textLink} href="/terms">
+          Terms of Use
+        </Link>
+      </nav>
+
       <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] text-default-400">
         <span>Everything runs locally in your browser</span>
         <VisitCounter />
